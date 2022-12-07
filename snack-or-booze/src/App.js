@@ -38,7 +38,8 @@ function App() {
 
   const handleAddItem = async (form) => {
     const response = await SnackOrBoozeApi.addItem({type : form.type, data: form});
-    if (form.type === 'drinks') {
+    
+    if (form.type.toLowerCase() === 'drinks') {
       getDrinks();
     } else {
       getSnacks();

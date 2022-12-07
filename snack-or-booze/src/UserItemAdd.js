@@ -4,9 +4,10 @@ import React, { useState } from "react";
 import "./UserItemAdd.css";
 
 function MenuForm({addItem}) {
-    const [form, updateForm] = useState({type: "", name: "", description: "", recipe: "", serve: ""});
+    const [form, updateForm] = useState({type: "drinks", name: "", description: "", recipe: "", serve: ""});
 
     function handleChange(e) {
+      debugger
         e.persist();
         // console.log(e.target.id, e.target.value, form)
         updateForm(({ ...form, [e.target.id]: e.target.value }));
@@ -24,13 +25,11 @@ function MenuForm({addItem}) {
           <form onSubmit={handleSubmit}>
             <div>
               <label htmlFor="type">Is this a snack or drink item?</label>
-              <input
-                type="type"
-                id="type"
-                placeholder="Snacks or Drinks"
-                onChange={handleChange}
-                value={form.type}
-              />
+              
+              <select id='type' onChange={handleChange} value={type}>
+                <option value='drinks'>Drinks</option>
+                <option value='snacks'>Snacks</option>
+              </select>
             </div>    
             <div>
               <label htmlFor="name">What's the name of this item?</label>
@@ -39,7 +38,7 @@ function MenuForm({addItem}) {
                 id="name"
                 placeholder="Enter item name"
                 onChange={handleChange}
-                value={form.name}
+                value={name}
               />
             </div>
             <div>
@@ -49,7 +48,7 @@ function MenuForm({addItem}) {
                     id="description"
                     placeholder="Say what's in it"
                     onChange={handleChange}
-                    value={form.description}
+                    value={description}
                 />
             </div>
             <div>
@@ -59,7 +58,7 @@ function MenuForm({addItem}) {
                     id="recipe"
                     placeholder="Say what's in it"
                     onChange={handleChange}
-                    value={form.recipe}
+                    value={recipe}
                 />
             </div>
             <div>
@@ -69,7 +68,7 @@ function MenuForm({addItem}) {
                     id="serve"
                     placeholder="Say how you make it"
                     onChange={handleChange}
-                    value={form.serve}
+                    value={serve}
                 />
             </div>
             <input type="Submit" value="Add this item" readOnly />
